@@ -35,3 +35,4 @@ The **Dashboard Cash Management** is a backend application developed using Sprin
 - Java 17 or later
 - Maven 3.6+
 - Git
+- Spring Boot (v2.7.2)
