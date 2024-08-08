@@ -30,25 +30,36 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-        <!-- Spring Boot Dependencies -->
+        <!-- Spring Boot Starter Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Spring Boot Starter Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+        <!-- Spring Boot Starter Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- MySQL Connector for Database -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.32</version> <!-- Replace with the latest version if needed -->
+            <version>8.0.32</version>
         </dependency>
-
 
         <!-- Lombok for reducing boilerplate code -->
         <dependency>
@@ -65,25 +76,17 @@
             <version>19.3.0.0</version>
         </dependency>
 
-        <!-- JSON Web Token for security -->
-        <!-- <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>-->
-
-        <!-- MapStruct for object mapping -->
-        <!--
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.5.2.Final</version>
-        </dependency>
--->
-        <!-- Spring Boot Testing Dependencies -->
+        <!-- Spring Boot Starter Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Security Test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -115,12 +118,6 @@
                             <artifactId>lombok</artifactId>
                             <version>1.18.22</version>
                         </path>
-                        <!--
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>1.5.2.Final</version>
-                        </path>-->
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>

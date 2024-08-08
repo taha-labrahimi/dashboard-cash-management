@@ -14,6 +14,7 @@ import java.util.List;
 public class CanalService {
 
     private final CanalRepository canalRepository;
+
     @Autowired
     private CanalMapper canalMapper;
 
