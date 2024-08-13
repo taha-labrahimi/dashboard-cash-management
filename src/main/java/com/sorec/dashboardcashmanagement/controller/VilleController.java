@@ -25,6 +25,21 @@ public class VilleController {
         return villeService.getAllVilles();
     }
 
+    @PostMapping
+    public VilleDTO createVille(@RequestBody VilleDTO villeDTO) {
+        return villeService.createVille(villeDTO);
+    }
+
+    @PutMapping("/{id}")
+    public VilleDTO updateVille(@PathVariable Long id, @RequestBody VilleDTO villeDTO) {
+        return villeService.updateVille(id, villeDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteVille(@PathVariable Long id) {
+        villeService.deleteVille(id);
+    }
+
     @GetMapping("/versements/{startDate}/{endDate}")
     public List<VilleDTO> getVersementsByVille(
             @PathVariable("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,

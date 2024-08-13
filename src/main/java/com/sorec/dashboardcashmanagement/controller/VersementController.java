@@ -25,6 +25,8 @@ public class VersementController {
         return versementService.getAllVersements();
     }
 
+
+
     @GetMapping("/statut/{startDate}/{endDate}")
     public List<VersementDTO> getVersementsAndPdvByStatut(
             @PathVariable("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,
