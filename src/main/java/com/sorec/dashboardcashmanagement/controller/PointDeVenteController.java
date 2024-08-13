@@ -3,9 +3,7 @@ package com.sorec.dashboardcashmanagement.controller;
 import com.sorec.dashboardcashmanagement.dto.PointDeVenteDTO;
 import com.sorec.dashboardcashmanagement.service.PointDeVenteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,20 @@ public class PointDeVenteController {
     @GetMapping
     public List<PointDeVenteDTO> getAllPointsDeVente() {
         return pointDeVenteService.getAllPointDeVentes();
+    }
+
+    @PostMapping
+    public PointDeVenteDTO createPointDeVente(@RequestBody PointDeVenteDTO pointDeVenteDTO) {
+        return pointDeVenteService.createPointDeVente(pointDeVenteDTO);
+    }
+
+    @PutMapping("/{id}")
+    public PointDeVenteDTO updatePointDeVente(@PathVariable Long id, @RequestBody PointDeVenteDTO pointDeVenteDTO) {
+        return pointDeVenteService.updatePointDeVente(id, pointDeVenteDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePointDeVente(@PathVariable Long id) {
+        pointDeVenteService.deletePointDeVente(id);
     }
 }

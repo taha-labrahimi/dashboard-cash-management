@@ -23,16 +23,28 @@ public class VersementMapper implements EntityMapper<Versement, VersementDTO>{
 
     @Override
     public List<VersementDTO> toDtos(List<Versement> entities) {
-        return entities.stream().map(this::toDto).collect(Collectors.toList());
+        return entities.stream().map(this::toDto).toList();
     }
 
     @Override
     public Versement toEntity(VersementDTO dto) {
-        return null;
+        if(dto == null){
+            return null;
+        }
+        Versement versement = new Versement();
+        versement.setId(dto.getId());
+        versement.setMontant(dto.getMontant());
+        versement.setDate(dto.getDate());
+        versement.setStatut(dto.getStatut());
+        versement.setPointDeVente(new PointDeVenteMapper().toEntity(dto.getPointDeVente()));
+        return versement;
     }
 
     @Override
-    public List<Versement> toEntities(List<VersementDTO> dtos) {
-        return null;
+    public List<Versement> toEntities(List<VersementDTO> dtos)
+    {
+        return dtos.stream()
+                .map(this::toEntity)
+                .toList();
     }
 }

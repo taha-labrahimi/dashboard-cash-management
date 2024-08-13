@@ -21,8 +21,23 @@ public class CanalController {
     }
 
     @GetMapping
-        public List<CanalDTO> getAllCanals() {
+    public List<CanalDTO> getAllCanals() {
         return canalService.getAllCanals();
+    }
+
+    @PostMapping
+    public CanalDTO createCanal(@RequestBody CanalDTO canalDTO) {
+        return canalService.createCanal(canalDTO);
+    }
+
+    @PutMapping("/{id}")
+    public CanalDTO updateCanal(@PathVariable Long id, @RequestBody CanalDTO canalDTO) {
+        return canalService.updateCanal(id, canalDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCanal(@PathVariable Long id) {
+        canalService.deleteCanal(id);
     }
 
     @GetMapping("/nombre-de-pdv/{startDate}/{endDate}")

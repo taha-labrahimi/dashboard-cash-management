@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class CanalMapper implements EntityMapper<Canal, CanalDTO>{
 
@@ -28,11 +30,21 @@ public class CanalMapper implements EntityMapper<Canal, CanalDTO>{
 
     @Override
     public Canal toEntity(CanalDTO dto) {
-        return null;
+        if (dto == null) {
+            return null;
+        }
+        Canal canal = new Canal();
+        canal.setId(dto.getId());
+        canal.setType(dto.getType());
+        canal.setImage(dto.getImage());
+        canal.setVersements(new VersementMapper().toEntities(dto.getVersements()));
+        return canal;
     }
 
     @Override
     public List<Canal> toEntities(List<CanalDTO> dtos) {
-        return Collections.emptyList();
+        return dtos.stream()
+                .map(this::toEntity)
+                .toList();
     }
 }

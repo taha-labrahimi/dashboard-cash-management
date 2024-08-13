@@ -21,16 +21,25 @@ public class PointDeVenteMapper implements EntityMapper<PointDeVente, PointDeVen
 
     @Override
     public List<PointDeVenteDTO> toDtos(List<PointDeVente> entities) {
-        return  entities.stream().map(this::toDto).collect(Collectors.toList());
+        return  entities.stream().map(this::toDto).toList();
     }
 
     @Override
     public PointDeVente toEntity(PointDeVenteDTO dto) {
-        return null;
+        if(dto == null){
+            return null;
+        }
+        PointDeVente pointDeVente = new PointDeVente();
+        pointDeVente.setId(dto.getId());
+        pointDeVente.setNom(dto.getNom());
+        pointDeVente.setVille(new VilleMapper().toEntity(dto.getVille()));
+        return pointDeVente;
     }
 
     @Override
     public List<PointDeVente> toEntities(List<PointDeVenteDTO> dtos) {
-        return null;
+        return dtos.stream()
+                .map(this::toEntity)
+                .toList();
     }
 }

@@ -1,6 +1,7 @@
 package com.sorec.dashboardcashmanagement.mapper;
 
 import com.sorec.dashboardcashmanagement.dto.VilleDTO;
+import com.sorec.dashboardcashmanagement.model.PointDeVente;
 import com.sorec.dashboardcashmanagement.model.Ville;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,14 @@ public class VilleMapper implements EntityMapper<Ville, VilleDTO>{
 
     @Override
     public Ville toEntity(VilleDTO dto) {
-        return null;
+        if (dto==null)
+        {
+            return null;
+        }
+        Ville ville = new Ville();
+        ville.setId(dto.getId());
+        ville.setNom(dto.getNom());
+        return ville;
     }
 
     @Override
