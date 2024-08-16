@@ -4,6 +4,7 @@ import com.sorec.dashboardcashmanagement.dto.VersementDTO;
 import com.sorec.dashboardcashmanagement.model.Versement;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
@@ -43,6 +44,9 @@ public class VersementMapper implements EntityMapper<Versement, VersementDTO>{
     @Override
     public List<Versement> toEntities(List<VersementDTO> dtos)
     {
+        if (dtos == null) {
+            return Collections.emptyList();
+        }
         return dtos.stream()
                 .map(this::toEntity)
                 .toList();

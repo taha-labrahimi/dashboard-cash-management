@@ -16,7 +16,7 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     private final String SECRET_KEY = "AComplexSecretKeyWithRandomCharacters123456!";
-    private final long VALIDITY_IN_MILLISECONDS = 3600000; // 1 hour
+    private final long VALIDITY_IN_MILLISECONDS = 3600000;
 
     private final UserDetailsService userDetailsService;
 
