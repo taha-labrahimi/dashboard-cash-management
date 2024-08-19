@@ -3,7 +3,7 @@ package com.sorec.dashboardcashmanagement.mapper;
 import com.sorec.dashboardcashmanagement.dto.UserDTO;
 import com.sorec.dashboardcashmanagement.model.User;
 import org.springframework.stereotype.Component;
-
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -34,7 +34,8 @@ public class UserMapper  implements EntityMapper<User, UserDTO>{
 
     @Override
     public List<User> toEntities(List<UserDTO> dtos) {
-        return null;
+
+        return Collections.emptyList()   ;
     }
 
 }

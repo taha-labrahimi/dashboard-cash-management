@@ -15,12 +15,13 @@ import java.util.List;
 public class VilleService {
 
     private final VilleRepository villeRepository;
-    @Autowired
-    private VilleMapper villeMapper;
+
+    private final VilleMapper villeMapper;
 
     @Autowired
-    public VilleService(VilleRepository villeRepository) {
+    public VilleService(VilleRepository villeRepository, VilleMapper villeMapper) {
         this.villeRepository = villeRepository;
+        this.villeMapper = villeMapper;
     }
 
     @Transactional(readOnly = true)

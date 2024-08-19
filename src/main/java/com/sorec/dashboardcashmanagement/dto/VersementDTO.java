@@ -16,17 +16,14 @@ public class VersementDTO implements Serializable {
     private PointDeVenteDTO pointDeVente;
     private Long pointDeVenteCount;
     private Double sumMontant;
-    private Double RecoveryRate;
+    private Double recoveryRate;
 
-
-    public VersementDTO(String statut,Double sumMontant, Long pointDeVenteCount) {
+    public VersementDTO(String statut, Double sumMontant, Long pointDeVenteCount) {
         this.statut = statut;
         this.pointDeVenteCount = pointDeVenteCount;
         this.sumMontant = sumMontant;
     }
-    public VersementDTO(){}
 
-    public VersementDTO(Double RecoveryRate) {
-        this.RecoveryRate = RecoveryRate;
-    }
+    public VersementDTO() {}
+
 }

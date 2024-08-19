@@ -21,18 +21,10 @@ public class CanalDTO implements Serializable{
         this.type = type;
         this.pointDeVenteCount = pointDeVenteCount;
     }
-    public CanalDTO(String type, Double montant) {
-        this.type = type;
-        this.montant = montant;
-    }
     public CanalDTO(String type, Double sumMontant, Long pointDeVenteCount,String image) {
         this.type = type;
         this.sumMontant = sumMontant;
         this.pointDeVenteCount = pointDeVenteCount;
         this.image = image;
-    }
-
-    public CanalDTO(Double sumMontant) {
-        this.sumMontant = sumMontant;
     }
 }

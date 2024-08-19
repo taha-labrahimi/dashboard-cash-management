@@ -3,6 +3,8 @@ package com.sorec.dashboardcashmanagement.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,8 +17,10 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private final String SECRET_KEY = "AComplexSecretKeyWithRandomCharacters123456!";
-    private final long VALIDITY_IN_MILLISECONDS = 3600000;
+    private static final String SECRET_KEY = "AComplexSecretKeyWithRandomCharacters123456!";
+    private static final long VALIDITY_IN_MILLISECONDS = 3600000;
+
+    private static final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
     private final UserDetailsService userDetailsService;
 
@@ -35,12 +39,17 @@ public class JwtTokenProvider {
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public String getUsername(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     public Authentication getAuthentication(String token) {
@@ -50,10 +59,9 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            // You can add logging here to log the exception for invalid tokens
             return false;
         }
     }
