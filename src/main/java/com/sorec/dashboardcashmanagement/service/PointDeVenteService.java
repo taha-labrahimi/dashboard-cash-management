@@ -4,7 +4,6 @@ import com.sorec.dashboardcashmanagement.dto.PointDeVenteDTO;
 import com.sorec.dashboardcashmanagement.mapper.PointDeVenteMapper;
 import com.sorec.dashboardcashmanagement.model.PointDeVente;
 import com.sorec.dashboardcashmanagement.repository.PointDeVenteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +13,11 @@ import java.util.List;
 public class PointDeVenteService {
 
     private final PointDeVenteRepository pointDeVenteRepository;
-    @Autowired
-    private PointDeVenteMapper pointDeVenteMapper;
+    private final PointDeVenteMapper pointDeVenteMapper;
 
-    @Autowired
-    public PointDeVenteService(PointDeVenteRepository pointDeVenteRepository) {
+    public PointDeVenteService(PointDeVenteRepository pointDeVenteRepository, PointDeVenteMapper pointDeVenteMapper) {
         this.pointDeVenteRepository = pointDeVenteRepository;
+        this.pointDeVenteMapper = pointDeVenteMapper;
     }
 
     @Transactional(readOnly = true)

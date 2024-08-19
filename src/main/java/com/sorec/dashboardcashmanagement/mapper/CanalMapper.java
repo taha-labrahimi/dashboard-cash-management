@@ -3,10 +3,8 @@ package com.sorec.dashboardcashmanagement.mapper;
 import com.sorec.dashboardcashmanagement.dto.CanalDTO;
 import com.sorec.dashboardcashmanagement.model.Canal;
 import org.springframework.stereotype.Component;
-
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Component
 public class CanalMapper implements EntityMapper<Canal, CanalDTO>{

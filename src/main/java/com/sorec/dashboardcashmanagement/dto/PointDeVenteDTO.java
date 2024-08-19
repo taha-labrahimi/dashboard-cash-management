@@ -9,5 +9,4 @@ public class PointDeVenteDTO implements Serializable {
     private Long id;
     private String nom;
     private VilleDTO ville;
-    //private List<VersementDTO> versements;
 }

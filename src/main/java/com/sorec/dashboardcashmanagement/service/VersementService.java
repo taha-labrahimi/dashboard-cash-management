@@ -14,12 +14,13 @@ import java.util.List;
 public class VersementService {
 
     private final VersementRepository versementRepository;
-    @Autowired
-    private VersementMapper versementMapper;
+
+    private final VersementMapper versementMapper;
 
     @Autowired
-    public VersementService(VersementRepository versementRepository) {
+    public VersementService(VersementRepository versementRepository , VersementMapper versementMapper) {
         this.versementRepository = versementRepository;
+        this.versementMapper = versementMapper;
     }
 
     @Transactional(readOnly = true)
@@ -37,15 +38,4 @@ public class VersementService {
         return versementRepository.findRecoveryRate(startDate, endDate);
     }
 
-    @Transactional
-    public VersementDTO createVersement(VersementDTO versementDTO) {
-        return versementMapper.toDto(versementRepository.save(versementMapper.toEntity(versementDTO)));
-    }
-
-
-
-    @Transactional
-    public void deleteVersement(Long id) {
-        versementRepository.deleteById(id);
-    }
 }

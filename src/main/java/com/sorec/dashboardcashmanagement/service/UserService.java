@@ -4,27 +4,17 @@ import com.sorec.dashboardcashmanagement.dto.UserDTO;
 import com.sorec.dashboardcashmanagement.mapper.UserMapper;
 import com.sorec.dashboardcashmanagement.model.User;
 import com.sorec.dashboardcashmanagement.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
-
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-    }
-
-    public List<UserDTO> getAllUsers() {
-        return userMapper.toDtos(userRepository.findAll());
+        this.userMapper = userMapper;
     }
 
     public UserDTO findByUsername(String username) {
@@ -32,8 +22,4 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return userMapper.toDto(user);
     }
-
-
-
-
 }
